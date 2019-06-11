@@ -54,7 +54,7 @@ public class CityController {
 
 	@PostMapping("${adminPath}/addone")
 	public String addStudentRestful(City city) {
-		int num=cityService.addOne(city);
+		cityService.addOne(city);
 
 
 		return "redirect:" + adminPath + "/list";

@@ -14,6 +14,14 @@ import java.util.Map;
 
 /**
  * Created by JIANGGE on 2019/6/11.
+ * 访问地址 -http://127.0.0.1:8080/swagger-ui.html
+ * 8080是项目端口号
+ *
+ 200 OK - [GET]：服务器成功返回用户请求的数据，该操作是幂等的（Idempotent）。
+ 201 CREATED - [POST/PUT/PATCH]：用户新建或修改数据成功。
+ 202 Accepted - [*]：表示一个请求已经进入后台排队（异步任务）
+ 204 NO CONTENT - [DELETE]：用户删除数据成功。
+ *
  */
 
 @RestController
@@ -42,13 +50,21 @@ public class ApiCityController {
         return cities;
     }
 
+    @ApiOperation(value = "获取单个城市", notes = "通过编号获取城市")
+    @GetMapping(value = "/${adminPath}/getOneById")
+    //@ResponseStatus(HttpStatus.OK)
+    public Object getUser(@RequestParam("id") int id){
+        City city=cityService.getOneById(id);
+        return city;
+    }
+
 
     @ApiOperation(value="添加城市", notes="添加城市")
     @PostMapping(value = "${adminPath}/addone")
     @ResponseStatus(HttpStatus.CREATED)
-    public int addUser(@RequestBody City city){
-        int num=cityService.addOne(city);
-        return num;
+    public Object addUser(@RequestBody City city){
+        Object obj=cityService.addOne(city);
+        return obj;
     }
 
     @ApiOperation(value="删除城市", notes="删除城市")

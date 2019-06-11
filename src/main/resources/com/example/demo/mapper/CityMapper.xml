@@ -12,8 +12,14 @@
     <select id="selectAll" resultMap="city">
 		select * from city
 	</select>
+	<select id="getOneById" resultType="com.example.demo.pojo.City">
+		select * from city WHERE  id =#{id}
+	</select>
+	<select id="getOneByName" resultType="com.example.demo.pojo.City">
+		select * from city WHERE  name =#{name}
+	</select>
 
-    <delete id="deleteOneById" parameterType="java.lang.Integer">
+	<delete id="deleteOneById" parameterType="java.lang.Integer">
 		delete from city where id = #{id,jdbcType=BIGINT}
 	</delete>
 

@@ -22,4 +22,8 @@ public interface CityMapper {
 
 
     boolean update(City city);
+
+    City  getOneById(@Param("id")int id);
+
+    List<City> getOneByName(@Param("name")String name);
 }
