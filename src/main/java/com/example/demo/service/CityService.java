@@ -22,6 +22,13 @@ public class CityService {
 	public List<City> list(){
 		return cityMapper.selectAll();
 	}
-	
-	
+
+
+    public void deleteOneById(Integer id) {
+		cityMapper.deleteOneById(id);
+    }
+
+    public int addOne(City city){
+		 return cityMapper.addOne(city);
+	}
 }

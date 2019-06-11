@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -14,6 +14,44 @@
 	margin: 0px auto;
 }
 </style>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script type="text/javascript">
+
+
+        /**
+         * 实际应用时，里边的参数应根据实际而改变，而不是写死的，
+         * 这里仅仅①简单地模拟前后端，②简单测试接口
+         *
+         */
+
+
+        function del(id) {
+            $.ajax({
+                type : "delete",
+                url : "http://localhost:8080/admin/deleteone",
+                data: {"id": id},
+                async : false,
+                type: "post",
+                dataType: "json",
+                success: function () {
+                    window.location.reload();
+                }
+//
+            });
+        }
+
+        function upd() {
+            $.ajax({
+                type : "put",
+                data:"id=6&t_name=cun&major=计科",
+                url : "http://localhost/student/updateone",
+                async : true
+            });
+        }
+	</script>
+
+
 </head>
 <body>
 
@@ -24,13 +62,40 @@
 		<tr>
 			<th>编号</th>
 			<th>城市</th>
+			<th>删除</th>
 		</tr>
 		<#list city as c>
 		<tr>
 			<td>${c.id}</td>
 			<td>${c.name}</td>
+			<td>	<!-- 删除 -->
+				<button id="btn" onclick="del('${c.id}')">删除</button>
+			</td>
 		</tr>
 		</#list>
 	</table>
+
+
+
+<div style="width: 50%">
+	<!-- 更新 -->
+	<button id="btn2" onclick="upd()">update request</button>
+</br>
+	</br>
+	</br>
+	</br>
+
+	<!-- 增加 -->
+	<form action="http://localhost:8080/admin/addone" method="post">
+		名称<input type="text" name="name" />
+		<input type="submit" value="submit" />
+	</form>
+
+	<!-- 查询 -->
+	<a href="http://localhost/student/findone/6">select request</a>
+
+</div>
+
+
 </body>
 </html>
