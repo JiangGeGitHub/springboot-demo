@@ -21,7 +21,6 @@ import java.util.Map;
  * SpringMVC控制器
  * */
 @Controller
-
 public class CityController {
 
 	@Autowired
