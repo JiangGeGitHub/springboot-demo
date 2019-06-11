@@ -35,18 +35,15 @@ public class CityController {
 		return "lists";
 	}
 
-	//@DeleteMapping("${adminPath}/deleteone/{id}")
-
-
 
 	@ResponseBody
 	@PostMapping("${adminPath}/deleteone")
-	public String deleteStudentById(Integer id) {
+	public ResultEntity deleteStudentById(Integer id) {
 		ResultEntity re=new ResultEntity();
 		cityService.deleteOneById(id);
 
 
-		return "200";
+		return re;
 	}
 
 	@PostMapping("${adminPath}/addone")

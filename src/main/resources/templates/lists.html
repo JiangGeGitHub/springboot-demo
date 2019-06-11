@@ -18,13 +18,6 @@
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script type="text/javascript">
 
-
-        /**
-         * 实际应用时，里边的参数应根据实际而改变，而不是写死的，
-         * 这里仅仅①简单地模拟前后端，②简单测试接口
-         *
-         */
-
         function del(id) {
             $.ajax({
                 url : "http://localhost:8080/admin/deleteone",
@@ -32,9 +25,20 @@
                 async : true,
                 type: "post",
                 dataType: "json",
-                success: function (data) {
-                    window.location.reload();
+
+                success: function(data){
+
+                    if(data.status==200){
+                        window.location.reload();
+					}
+
+                },
+                error: function(){
+                    alert("删除失败");
                 }
+
+
+
             });
         }
 
@@ -92,7 +96,5 @@
 	<a href="http://localhost/student/findone/6">select request</a>
 
 </div>
-
-
 </body>
 </html>
