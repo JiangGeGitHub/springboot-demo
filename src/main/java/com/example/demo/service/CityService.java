@@ -3,7 +3,9 @@ package com.example.demo.service;
 import com.example.demo.exception.ExistException;
 import com.example.demo.exception.Result;
 import com.example.demo.mapper.CityMapper;
+import com.example.demo.mapper.CityWeatherMapper;
 import com.example.demo.pojo.City;
+import com.example.demo.pojo.CityWeather;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -19,7 +21,17 @@ public class CityService {
 
 	@Autowired
 	private CityMapper cityMapper;
-	
+
+
+	@Autowired
+	private CityWeatherMapper cityWeatherMapper;
+
+
+
+	public List<CityWeather> getWeatherById(Integer id){
+		List<CityWeather> lsit=cityWeatherMapper.getWeatherById(id);
+		return lsit;
+	}
 	
 	public List<City> list(){
 		return cityMapper.selectAll();

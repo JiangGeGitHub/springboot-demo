@@ -2,6 +2,7 @@ package com.example.demo.api;
 
 import com.example.demo.exception.ExistException;
 import com.example.demo.pojo.City;
+import com.example.demo.pojo.CityWeather;
 import com.example.demo.service.CityService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
@@ -47,6 +48,9 @@ public class ApiCityController {
 	ApiOperation注解中，value的值为接口说明，notes可以作为接口的简单描述。
 	 */
 
+
+
+
     @ApiOperation(value = "获取城市列表", notes = "获取城市列表")
     @GetMapping(value = "${adminPath}/list")
     @ResponseStatus(HttpStatus.OK)
@@ -54,6 +58,15 @@ public class ApiCityController {
         List<City> cities = cityService.list();
 
         return cities;
+    }
+
+
+    @ApiOperation(value = "根据id获取城市天气列表", notes = "根据id获取城市天气列表")
+    @GetMapping(value = "${adminPath}/weatherlist")
+    @ResponseStatus(HttpStatus.OK)
+    public List<CityWeather> list(@RequestParam("id") int id) {
+        List<CityWeather> cityWeatherList = cityService.getWeatherById(id);
+        return cityWeatherList;
     }
 
     @ApiOperation(value = "获取单个城市", notes = "通过编号获取城市")
