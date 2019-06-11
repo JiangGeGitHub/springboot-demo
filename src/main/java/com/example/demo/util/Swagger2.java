@@ -17,10 +17,12 @@ public class Swagger2 {
     @Bean
     public Docket createRestApi() {
         return new Docket(DocumentationType.SWAGGER_2)
-                .protocols(Sets.newHashSet("http")) //协议，http或https
+                //协议，http或https
+                .protocols(Sets.newHashSet("http"))
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.demo.api")) //一定要写对，会在这个路径下扫描controller定义
+                //一定要写对，会在这个路径下扫描controller定义
+                .apis(RequestHandlerSelectors.basePackage("com.example.demo.api"))
                 .paths(PathSelectors.any())
                 .build();
     }
