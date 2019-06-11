@@ -19,4 +19,7 @@ public interface CityMapper {
     int deleteOneById(@Param("id") Integer id);
 
     int addOne( City city);
+
+
+    boolean update(City city);
 }

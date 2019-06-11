@@ -31,4 +31,8 @@ public class CityService {
     public int addOne(City city){
 		 return cityMapper.addOne(city);
 	}
+
+	public boolean update(City city) {
+		return cityMapper.update(city);
+	}
 }

@@ -13,6 +13,9 @@
 .layout {
 	margin: 0px auto;
 }
+
+body{ text-align:center}
+#divcss5{margin:0 auto;border:1px solid #000;width:300px;height:100px}
 </style>
 
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -78,22 +81,51 @@
 
 
 
-<div style="width: 50%">
-	<!-- 更新 -->
-	<button id="btn2" onclick="upd()">update request</button>
+<div >
+
 </br>
 	</br>
 	</br>
 	</br>
 
 	<!-- 增加 -->
-	<form action="http://localhost:8080/admin/addone" method="post">
+	<form class="layout" action="http://localhost:8080/admin/addone" method="post" style="width: 50%">
+		<caption>
+			<h3> 增加  </h3>
+		</caption>
+
 		名称<input type="text" name="name" />
-		<input type="submit" value="submit" />
+		<input type="submit" value="新增" />
 	</form>
 
-	<!-- 查询 -->
-	<a href="http://localhost/student/findone/6">select request</a>
+	</br>
+	</br>
+	</br>
+
+	<!--&lt;!&ndash; 更新 &ndash;&gt;-->
+	<!--<button id="btn2" onclick="upd()">update request</button>-->
+
+	<!-- 更新 -->
+	<form class="layout" action="http://localhost:8080/admin/update" method="post" style="width: 50%">
+
+		<caption>
+			<h3> 修改  </h3>
+		</caption>
+		编号<input type="text" name="id" />
+		</br>
+		</br>
+		名称<input type="text" name="name" />
+		</br>
+		</br>
+		<input type="submit" value="修改" />
+	</form>
+
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
+	</br>
 
 </div>
 </body>

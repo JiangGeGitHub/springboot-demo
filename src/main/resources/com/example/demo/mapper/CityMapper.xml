@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demo.mapper.CityMapper">
-	
-	<resultMap type="com.example.demo.pojo.City" id="city">
-		<result column="id" jdbcType="BIGINT" property="id" />
-		<result column="name" jdbcType="VARCHAR" property="name" />
 
-	</resultMap>
+    <resultMap type="com.example.demo.pojo.City" id="city">
+        <result column="id" jdbcType="BIGINT" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
 
-	<select id="selectAll" resultMap="city" >
+    </resultMap>
+
+
+    <select id="selectAll" resultMap="city">
 		select * from city
 	</select>
 
-	<delete id="deleteOneById" parameterType="java.lang.Integer">
+    <delete id="deleteOneById" parameterType="java.lang.Integer">
 		delete from city where id = #{id,jdbcType=BIGINT}
 	</delete>
 
 
-	<insert id="addOne" parameterType="com.example.demo.pojo.City" keyProperty="id" useGeneratedKeys="true" >
+    <insert id="addOne" parameterType="com.example.demo.pojo.City" keyProperty="id" useGeneratedKeys="true">
 		INSERT INTO city
 		(
 		id,name
@@ -29,6 +30,16 @@
 		)
 	</insert>
 
+
+    <update id="update" parameterType="com.example.demo.pojo.City">
+
+		update
+        city
+        set
+        name=#{name, jdbcType=VARCHAR}
+        where
+        id=#{id}
+	</update>
 
 </mapper> 
  

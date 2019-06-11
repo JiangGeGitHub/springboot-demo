@@ -55,4 +55,13 @@ public class CityController {
 	}
 
 
+	//@RequestMapping(value = "/update", method = RequestMethod.PUT)
+	@PostMapping("${adminPath}/update")
+	public String updateUser( City city) {
+		System.out.println("开始更新...");
+		boolean flag=cityService.update(city);
+		return "redirect:" + adminPath + "/list";
+	}
+
+
 }
