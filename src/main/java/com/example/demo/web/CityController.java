@@ -39,13 +39,14 @@ public class CityController {
 
 
 
+	@ResponseBody
 	@PostMapping("${adminPath}/deleteone")
-	public void deleteStudentById(Integer id) {
+	public String deleteStudentById(Integer id) {
 		ResultEntity re=new ResultEntity();
 		cityService.deleteOneById(id);
 
 
-		//return "redirect:" + adminPath + "/list";
+		return "200";
 	}
 
 	@PostMapping("${adminPath}/addone")

@@ -25,19 +25,16 @@
          *
          */
 
-
         function del(id) {
             $.ajax({
-                type : "delete",
                 url : "http://localhost:8080/admin/deleteone",
                 data: {"id": id},
-                async : false,
+                async : true,
                 type: "post",
                 dataType: "json",
-                success: function () {
+                success: function (data) {
                     window.location.reload();
                 }
-//
             });
         }
 
