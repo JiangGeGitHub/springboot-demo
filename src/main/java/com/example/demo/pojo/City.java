@@ -1,7 +1,7 @@
 package com.example.demo.pojo;
 
 
-/*
+/**
  * 
  * City实体类
  * */

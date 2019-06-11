@@ -50,7 +50,6 @@ public class CityController {
 	public String addStudentRestful(City city) {
 		int num=cityService.addOne(city);
 
-		//System.out.print(num);
 
 		return "redirect:" + adminPath + "/list";
 	}

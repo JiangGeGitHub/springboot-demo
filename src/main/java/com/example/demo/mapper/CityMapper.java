@@ -8,9 +8,9 @@ import com.example.demo.pojo.City;
 import org.apache.ibatis.annotations.Param;
 
 
-/*
+/**
  * Mapper接口，这里需要加上Mapper注解
- * */
+ */
 @Mapper
 public interface CityMapper {
 	
