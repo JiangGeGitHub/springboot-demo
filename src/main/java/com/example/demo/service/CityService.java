@@ -35,7 +35,7 @@ public class CityService {
 
 		List<City> cityList = cityMapper.getOneByName(city.getName());
 		if (!CollectionUtils.isEmpty(cityList)){
-			return new Result("城市 " + city.getName() + "已经存在",
+			return new Result("城市【" + city.getName() + "】已经存在",
 					Result.ErrorCode.USER_ALREADY_EXIST.getCode());
 		}
 

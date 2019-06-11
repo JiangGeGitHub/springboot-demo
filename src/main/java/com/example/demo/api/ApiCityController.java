@@ -62,7 +62,9 @@ public class ApiCityController {
     @ApiOperation(value="添加城市", notes="添加城市")
     @PostMapping(value = "${adminPath}/addone")
     @ResponseStatus(HttpStatus.CREATED)
-    public Object addUser(@RequestBody City city){
+    public Object addUser(@ApiParam(value = "名称", required = true) @RequestParam("name") String name){
+        City city=new City();
+        city.setName(name);
         Object obj=cityService.addOne(city);
         return obj;
     }
