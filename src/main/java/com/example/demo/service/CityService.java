@@ -1,15 +1,14 @@
 package com.example.demo.service;
 
-import java.util.List;
-
+import com.example.demo.exception.ExistException;
 import com.example.demo.exception.Result;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-
 import com.example.demo.mapper.CityMapper;
 import com.example.demo.pojo.City;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+
+import java.util.List;
 
 
 /*
@@ -31,12 +30,12 @@ public class CityService {
 		cityMapper.deleteOneById(id);
     }
 
-    public Object addOne(City city){
+    public Object addOne(City city) throws ExistException {
 
 		List<City> cityList = cityMapper.getOneByName(city.getName());
+
 		if (!CollectionUtils.isEmpty(cityList)){
-			return new Result("城市【" + city.getName() + "】已经存在",
-					Result.ErrorCode.USER_ALREADY_EXIST.getCode());
+			throw new ExistException("城市【" + city.getName() + "】已经存在", Result.ErrorCode.USER_NOT_FOUND.getCode());
 		}
 
 		 return cityMapper.addOne(city);

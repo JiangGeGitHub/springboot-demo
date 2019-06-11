@@ -1,18 +1,20 @@
 package com.example.demo.web;
 
-import java.util.List;
-import java.util.Map;
-
+import com.example.demo.exception.ExistException;
+import com.example.demo.pojo.City;
 import com.example.demo.pojo.ResultEntity;
-import io.swagger.annotations.ApiOperation;
+import com.example.demo.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-import com.example.demo.pojo.City;
-import com.example.demo.service.CityService;
+import java.util.List;
+import java.util.Map;
 
 
 /*
@@ -53,7 +55,7 @@ public class CityController {
 	}
 
 	@PostMapping("${adminPath}/addone")
-	public String addStudentRestful(City city) {
+	public String addStudentRestful(City city) throws ExistException {
 		cityService.addOne(city);
 
 

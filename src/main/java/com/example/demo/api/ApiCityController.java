@@ -1,5 +1,6 @@
 package com.example.demo.api;
 
+import com.example.demo.exception.ExistException;
 import com.example.demo.pojo.City;
 import com.example.demo.service.CityService;
 import io.swagger.annotations.ApiOperation;
@@ -10,7 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by JIANGGE on 2019/6/11.
@@ -62,7 +62,7 @@ public class ApiCityController {
     @ApiOperation(value="添加城市", notes="添加城市")
     @PostMapping(value = "${adminPath}/addone")
     @ResponseStatus(HttpStatus.CREATED)
-    public Object addUser(@ApiParam(value = "名称", required = true) @RequestParam("name") String name){
+    public Object addUser(@ApiParam(value = "名称", required = true) @RequestParam("name") String name) throws ExistException {
         City city=new City();
         city.setName(name);
         Object obj=cityService.addOne(city);
