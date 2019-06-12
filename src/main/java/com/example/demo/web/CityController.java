@@ -71,4 +71,14 @@ public class CityController {
 	}
 
 
+	@ResponseStatus(HttpStatus.OK)
+	@GetMapping(value = "${adminPath}/viewlist")
+	public String viewlist() {
+		List<City> cities = cityService.list();
+		return "vueindex";
+	}
+
+
+
+
 }
