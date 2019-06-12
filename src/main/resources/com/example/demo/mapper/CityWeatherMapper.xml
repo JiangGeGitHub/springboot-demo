@@ -7,10 +7,15 @@
         <result column="weather" jdbcType="VARCHAR" property="weather"/>
 		<result column="date" jdbcType="TIMESTAMP" property="date" />
     </resultMap>
+    <delete id="delweatherlist" parameterType="java.lang.Integer">
+        delete from city_weather where id = #{id,jdbcType=BIGINT}
+    </delete>
 
-
-	<select id="getWeatherById" resultMap="weather">
-		select * from city_weather WHERE  city_id =#{id}
+    <select id="getWeatherById" resultMap="weather">
+		select cw.*,c.name
+		 from city_weather cw
+		LEFT join city c on c.id=city_id
+		WHERE  cw.city_id =#{id}
 	</select>
 </mapper> 
  

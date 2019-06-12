@@ -60,4 +60,8 @@ public class CityService {
 	public City getOneById(int id) {
     	return cityMapper.getOneById(id);
 	}
+
+	public void delweatherlist(int id) {
+		cityWeatherMapper.delweatherlist(id);
+	}
 }

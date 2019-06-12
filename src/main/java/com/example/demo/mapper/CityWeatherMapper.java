@@ -16,4 +16,5 @@ public interface CityWeatherMapper {
 
     List<CityWeather> getWeatherById(@Param("id")int id);
 
+    void delweatherlist(@Param("id")int id);
 }

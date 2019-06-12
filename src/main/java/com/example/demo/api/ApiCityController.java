@@ -69,6 +69,14 @@ public class ApiCityController {
         return cityWeatherList;
     }
 
+    @ApiOperation(value = "根据id删除城市及天气历史", notes = "根据id删除城市及天气历史")
+    @GetMapping(value = "${adminPath}/delweatherlist")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void delweatherlist(@RequestParam("id") int id) {
+        cityService.delweatherlist(id);
+    }
+
+
     @ApiOperation(value = "获取单个城市", notes = "通过编号获取城市")
     @GetMapping(value = "/${adminPath}/getOneById")
     //@ResponseStatus(HttpStatus.OK)

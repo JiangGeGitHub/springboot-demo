@@ -11,6 +11,7 @@ public class CityWeather {
     private Integer cityId;
     private String weather;
     private Date date;
+    private String name;
 
     public Integer getCityId() {
         return cityId;
@@ -34,5 +35,13 @@ public class CityWeather {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }
