@@ -1,7 +1,9 @@
 package com.example.demo.web;
 
+import com.alibaba.fastjson.JSON;
 import com.example.demo.exception.ExistException;
 import com.example.demo.pojo.City;
+import com.example.demo.pojo.CityWeather;
 import com.example.demo.pojo.ResultEntity;
 import com.example.demo.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -74,11 +76,20 @@ public class CityController {
 	@ResponseStatus(HttpStatus.OK)
 	@GetMapping(value = "${adminPath}/viewlist")
 	public String viewlist() {
-		List<City> cities = cityService.list();
+		//List<CityWeather> cityWeatherList = cityService.getWeatherById(id);
 		return "vueindex";
 	}
 
+	@ResponseBody
+	@PostMapping (value = "${adminPath}/viewlists")
+	public String viewlists() {
+		Integer id=1;
+		List<CityWeather> cityWeatherList = cityService.getWeatherById(1);
 
+		String jsonStr= JSON.toJSONString(cityWeatherList);
+
+		return jsonStr;
+	}
 
 
 }
