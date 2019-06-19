@@ -83,6 +83,19 @@
 			<version>1.2.7</version>
 		</dependency>
 
+		<!--kafka 配置开始-->
+
+			<dependency>
+				<groupId>org.springframework.kafka</groupId>
+				<artifactId>spring-kafka</artifactId>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.code.gson</groupId>
+				<artifactId>gson</artifactId>
+			</dependency>
+		<!--kafka 配置结束-->
+
 	</dependencies>
 
 	<build>
