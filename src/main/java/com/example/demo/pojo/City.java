@@ -1,37 +1,30 @@
 package com.example.demo.pojo;
 
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.io.Serializable;
+import java.util.Date;
+
+
 /**
- * 
+ *
  * City实体类
  * */
-public class City {
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+// 需要实现序列化接口
+public class City implements Serializable {
 	
 	private Integer id;
 	
 	
 	private String name;
 
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	
-	
-	
 
 }

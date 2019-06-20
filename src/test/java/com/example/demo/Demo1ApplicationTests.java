@@ -2,6 +2,8 @@ package com.example.demo;
 
 import com.example.demo.kafka.KafkaProducer;
 import com.example.demo.kafka.KafkaProducer;
+import com.example.demo.kafka.KafkaTopic;
+import com.example.demo.kafka.Topic;
 import org.apache.kafka.clients.admin.*;
 import org.apache.kafka.common.Metric;
 import org.apache.kafka.common.MetricName;
@@ -30,20 +32,26 @@ public class Demo1ApplicationTests {
 	private KafkaProducer sender;
 
 
+	@Autowired
+	private KafkaTopic kafkaTopic;
 
 	@Test
 	public void kafkaTest() {
 
 		for (int i = 0; i < 3; i++) {
 			//调用消息发送类中的消息发送方法
-			sender.send();
-
+			sender.send(Topic.SIMPLE, "hello spring boot kafka");
 			try {
 				Thread.sleep(100);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Test
+	public void topicTest(){
+		kafkaTopic.queryTopic();
 	}
 
 }
