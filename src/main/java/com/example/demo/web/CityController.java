@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -23,6 +20,8 @@ import java.util.Map;
  * SpringMVC控制器
  * */
 @Controller
+//跨域处理，所有本Controller中的方法都支持来自192.168.1.97:8080的请求
+@CrossOrigin(origins = "http://192.168.1.97:8080", maxAge = 3600)
 public class CityController {
 
 	@Autowired
